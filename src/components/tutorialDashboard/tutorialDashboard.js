@@ -71,11 +71,11 @@ class TutorialDashboard extends React.Component {
             <Col xs={12} sm={4}>
               <TutorialCard
                 title="Integrating API-driven applications"
-                getStartedLink="#"
-                getStartedText=""
-                getStartedIcon={<span>&nbsp;</span>}
+                getStartedLink="/tutorial/2"
+                getStartedText="Get Started"
+                getStartedIcon={<Icon type="fa" name="arrow-circle-o-right" className="fa-lg" />}
                 minsIcon={<Icon type="fa" name="clock-o" className="fa-lg" style={{ paddingRight: 5 }} />}
-                mins={0}
+                mins={40}
               >
                 <p>Expose and protect an API that reports on arrivals and departures at a fictional airport.</p>
               </TutorialCard>
