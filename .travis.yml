@@ -1,0 +1,30 @@
+language: node_js
+cache:
+  yarn: true
+notifications:
+  email: false
+node_js:
+  - '10'
+before_script:
+  - yarn build
+
+sudo: required
+
+env:
+  global:
+    - OPERATOR_NAME=tutorial-web-app-operator
+
+stages:
+  - compile
+  - name: push
+    if: fork = false
+
+jobs:
+  include:
+    - stage: compile
+      script:
+        - make docker-build
+    - stage: push
+      script:
+        - docker login --password "$QUAY_PASSWORD" --username "$QUAY_USERNAME" quay.io
+        - make docker-build-and-push TAG=$(git rev-parse --short ${TRAVIS_COMMIT})
